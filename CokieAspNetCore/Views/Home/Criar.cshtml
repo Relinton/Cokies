@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<div class="card">
+    <div class="card-header card-header-text card-header-info">
+        <div class="card-text">
+            <h4 class="card-title">Avaliação</h4>
+        </div>
+    </div>
+    <div class="card-body" id="painel-enquete">
+        <div class="card-title">
+            <h4>Sua opinião é muito importante para nós, deixe aqui sua avaliação do Portal da Transparência</h4>
+            <div class="form-check form-check-radio form-check-inline">
+                <input type="radio" name="opcao" value="1" />Péssimo<br />
+            </div>
+            <div class="form-check form-check-radio form-check-inline">
+                <input type="radio" name="opcao" value="2" />Ruim<br />
+            </div>
+            <div class="form-check form-check-radio form-check-inline">
+                <input type="radio" name="opcao" value="3" />Indiferente<br />
+            </div>
+            <div class="form-check form-check-radio form-check-inline">
+                <input type="radio" name="opcao" value="4" />Bom<br />
+            </div>
+            <div class="form-check form-check-radio form-check-inline">
+                <input type="radio" name="opcao" value="5" />Ótimo<br />
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <button class="btn btn-success" id="btnEnviarEnquete">Enviar</button>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script>
+        $(function () {
+            $("#btnEnviarEnquete").click(function () {
+                var opc = $("#painel-enquete input[type=radio]:checked").val();
+                $.ajax({
+                    type: "POST",
+                    url: "Criar",
+                    data: { opcao: opc }
+                }).done(function (msg) {
+                    $("#painel-enquete .card-title").html("<p>" + msg + "<p>");
+                    $("#painel-enquete .panel-footer").hide();
+                    $("#graficoPizza .div").html();
+                });
+            });
+
+        });
+    </script>
+}
+
+

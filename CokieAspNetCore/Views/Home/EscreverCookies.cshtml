@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "EscreverCookies";
+}
+
+<h1>Especifique suas preferências :</h1>
+<form asp-action="EscreverCookies" asp-controller="Home">
+    <select name="setting">
+        <option value="fontName">Nome da Fonte</option>
+        <option value="fontSize">Tamanho da Fonte</option>
+        <option value="color">Color</option>
+    </select>
+    <input type="text" name="settingValue" />
+    <input type="checkbox" name="isPersistent"
+           value="true" /> É persistente?
+    <input type="submit" value="Escrever Cookie" />
+</form>
+
+<h4>@ViewBag.Message</h4>
+
+<h4>
+    <a asp-action="LerCookies" asp-controller="Home">
+        Ler Cookies
+    </a>
+</h4>

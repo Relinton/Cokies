@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Salvar informações de Cookies</h2>
+<form asp-controller="Home" asp-action="CadastrarCookies" method="post">
+    <select name="cookiename">
+        <option value="username">Nome de Usuário</option>
+        <option value="password">Senha</option>
+    </select>
+    <input type="text" name="cookievalue" value="" />
+    <input type="checkbox" name="IsPersistent" value="true" />? É Persistente
+    <input type="submit" value="Add Cookie" />
+</form>
+<p><a asp-action="LerCookies" asp-controller="Home">Ler Cookies</a></p>
+<p>@ViewBag.message</p>
